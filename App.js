@@ -26,23 +26,25 @@ const App = () => {
             color: '#FFFFFF',
           },
         }}>
+
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="Drawer"component={Drawer} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Drawer"component={Drawer} options={{ headerShown: false }}/>
+        <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen
           name="NovaConta"
           component={NovaConta}
-          options={{headerTitle: 'Nova Conta'}}
+          options={{ headerTitle: 'Nova Conta' }}
         />
         <Stack.Screen
           name="RecuperarSenha"
           component={RecuperarSenha}
-          options={{headerTitle: 'Recuperação de senha'}}
+          options={{ headerTitle: 'Recuperação de senha' }}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

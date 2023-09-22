@@ -3,13 +3,12 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
-  Image,
   StyleSheet,
 } from 'react-native';
 import {useState} from 'react';
 import Btn from '../components/Btn/Btn';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FormContainer from '../components/FormContainer/FormContainer';
+import SearchInput from '../components/SearchInput/SearchInput';
 
 /*Definição da função de criação do componente*/
 const Home = () => {
@@ -27,65 +26,11 @@ const Home = () => {
   };
 
   return (
-    <PaperProvider theme={theme}>
-      <View style={style.container}>
-        <View style={style.imgContainer}>
-          <Icon name="weight-kilogram" size={80} color="#555555" />
-        </View>
-
-        <Text style={[style.texto, style.labelInput]}>Peso:</Text>
-        <TextInput
-          style={[style.texto, style.inputStyle]}
-          value={txtPeso}
-          onChangeText={setPeso}
-          placeholder='Ex: 75'
-        />
-
-        <Text style={[style.texto, style.labelInput]}>Altura:</Text>
-        <TextInput
-          style={[style.texto, style.inputStyle]}
-          value={txtAltura}
-          onChangeText={setAltura}
-          placeholder='Ex: 175'
-        />
-
-        <Btn txt="CALCULAR" action={calcIMC} />
-
-        <Text style={[style.texto, style.txtResult]}>{imc}</Text>
-      </View>
-    </PaperProvider>
+    <FormContainer>
+      <SearchInput/>
+    </FormContainer>
   );
 };
-
-const style = StyleSheet.create({
-  imgContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-  texto: {
-    fontSize: 24,
-    fontFamily: 'AveriaLibre-Regular',
-  },
-  labelInput: {
-    marginTop: 10
-  },    
-  inputStyle: {
-    padding: 5,
-    borderWidth: 1,
-    borderColor: '#387392',
-    color: '#555555',
-    marginTop: 5,
-  },
-  container: {
-    padding: 10,
-  },
-  txtResult: {
-    marginTop: 10,
-    textAlign: 'center',
-  },
-});
-
 
 export default Home;
 
