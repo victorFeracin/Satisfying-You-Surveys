@@ -17,6 +17,9 @@ const Login = (props) => {
   const goToNovaConta = () => {
     props.navigation.navigate('NovaConta');
   }
+  const goToRecuperarSenha = () => {
+    props.navigation.navigate('RecuperarSenha')
+  }
 
   return (
     <FormContainer>
@@ -28,7 +31,7 @@ const Login = (props) => {
 
       <Btn txt="Entrar" action={goToHome} backgroundColor="#37BD6D" padding={10} marginTop={30}/>
       <Btn txt="Criar minha conta" action={goToNovaConta} backgroundColor="#419ED7" padding={5} marginTop={60}/>
-      <Btn txt="Esqueci minha senha" action={goToHome} backgroundColor="#B0CCDE" padding={5} marginTop={10}/>
+      <Btn txt="Esqueci minha senha" action={goToRecuperarSenha} backgroundColor="#B0CCDE" padding={5} marginTop={10}/>
     </FormContainer>
   );
 }

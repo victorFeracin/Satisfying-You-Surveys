@@ -5,7 +5,7 @@ import ErrorText from '../components/ErrorText/ErrorText';
 import Input from '../components/Input/Input';
 
 
-const NovaConta = (props) => {
+const RecuperarSenha = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,13 +19,11 @@ const NovaConta = (props) => {
     <FormContainer>
 
       <Input label="E-mail" value={email} onChangeText={setEmail}/>
-      <Input label="Senha" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-      <Input label="Repetir Senha" value={repeatPassword} onChangeText={setRepeatPassword} secureTextEntry={true}/>
-      <ErrorText message="O campo repetir senha difere da senha." color="#FD7979"/>
+      <ErrorText message="E-mail parece ser inválido." color="#FD7979"/>
 
-      <Btn txt="CADASTRAR" action={goToLogin} backgroundColor="#37BD6D" padding={10} marginTop={30}/>
+      <Btn txt="RECUPERAR" action={goToLogin} backgroundColor="#37BD6D" padding={10} marginTop={30}/>
     </FormContainer>
   );
 }
 
-export default NovaConta;
+export default RecuperarSenha;
