@@ -7,7 +7,8 @@ const StyleSearchInput = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     paddingHorizontal: 8,
-    marginVertical: 6,
+    marginVertical: 2,
+    height: 40,
   },
   input: {
     flex: 1,
@@ -16,12 +17,10 @@ const StyleSearchInput = StyleSheet.create({
     color: '#8B8B8B',
   },
   icon: {
-    width: 20,
-    height: 20,
     marginRight: 4,
   },
   button: {
-    padding: 8,
+    padding: 6,
   },
 });
 

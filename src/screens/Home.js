@@ -6,92 +6,65 @@ import {
   StyleSheet,
 } from 'react-native';
 import {useState} from 'react';
-import Btn from '../components/Btn/Btn';
 import FormContainer from '../components/FormContainer/FormContainer';
 import SearchInput from '../components/SearchInput/SearchInput';
+import CardContainer from '../components/CardContainer/CardContainer';
+import SurveyCard from '../components/SurveyCard/SurveyCard';
+import Btn from '../components/Btn/Btn';
 
 /*Definição da função de criação do componente*/
-const Home = () => {
-  const [txtPeso, setPeso] = useState('');
-  const [txtAltura, setAltura] = useState('');
-  const [imc, setIMC] = useState('');
+const Home = (props) => {
 
-  const calcIMC = () => {
-    let peso = parseFloat(txtPeso);
-    let altura = parseFloat(txtAltura);
+  const goToAcoesPesquisa = (link) => {
+    props.navigation.navigate(link)
+  }
+  const goToNovaPesquisa = () => {
+    props.navigation.navigate('Login');
+  }
 
-    let result = (peso / (altura * altura)).toString();
-
-    setIMC(result);
-  };
+  const cardsTest = [
+      {
+        img: require('../../assets/images/Secomp.png'),
+        title: 'SECOMP 2023',
+        date: '10/10/2023',
+        link: 'Login'
+      },
+      {
+        img: require('../../assets/images/Ubuntu.png'),
+        title: 'UBUNTU 2022',
+        date: '05/06/2022',
+        link: 'NovaConta'
+      },
+      {
+        img: require('../../assets/images/MeninasCpu.png'),
+        title: 'MENINAS CPU',
+        date: '15/08/2023',
+        link: 'Login'
+      },
+      {
+        img: require('../../assets/images/Secomp.png'),
+        title: 'Teste 202424244',
+        date: '07/07/2024',
+        link: 'Login'
+      },
+  ] //REMOVER QUANDO CHAMAR API
 
   return (
-    <FormContainer>
+    <FormContainer padding={15}>
       <SearchInput/>
+
+      <CardContainer>
+        {cardsTest.map((card, index) => {
+          return(
+            <SurveyCard key={index} img={card?.img} title={card?.title} date={card?.date} onPress={() => goToAcoesPesquisa(card?.link)}/>
+          )
+        })} 
+      </CardContainer>
+      
+      <Btn txt="NOVA PESQUISA" action={goToNovaPesquisa} backgroundColor="#37BD6D" padding={10} marginTop={30}/>
+
     </FormContainer>
   );
 };
 
 export default Home;
-
-
-
-//Exportação do componente
-// export default App;
-
-// const App = () => {
-
-//   return (
-//     <ViewComponent>
-//       <Image style={{width: 50, height: 50}} source={{ uri:'https://reactnative.dev/img/tiny_logo.png' }}/>
-//       <Text>Altura:</Text>
-//     </ViewComponent>
-//   )
-// }
-
-// export default App;
-
-// const App = () => {
-//   return (
-//       <View style={estilos.container}>
-//           <View style={estilos.subcontainer1}>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'red' }}></View>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'blue' }}></View>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'green' }}></View>
-//           </View>
-
-//           <View style={estilos.subcontainer2}>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'brown' }}></View>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'yellow' }}></View>
-//               <View style={{ width: 50, height: 50, backgroundColor: 'magenta' }}></View>
-//           </View>
-//       </View>
-//   )
-// }
-
-// const estilos = StyleSheet.create({
-//   container: {
-//       flex: 1,
-//       backgroundColor: 'white',
-//       flexDirection: 'row',
-//       alignItems: 'flex-end'
-
-//   },
-//   subcontainer1: {
-//       flex: 1,
-//       height: '50%',
-//       backgroundColor: 'gray',
-//       flexDirection: 'row',
-//       justifyContent: 'space-between',
-
-//   },
-//   subcontainer2: {
-//       flex: 1,
-//       height: '50%',
-//       backgroundColor: 'orange',
-//       flexDirection: 'column',
-//       justifyContent: 'space-between',
-//       alignItems: 'flex-end'
-
-//   }
-// })

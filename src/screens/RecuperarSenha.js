@@ -16,7 +16,7 @@ const RecuperarSenha = (props) => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer padding={30}>
 
       <Input label="E-mail" value={email} onChangeText={setEmail}/>
       <ErrorText message="E-mail parece ser inválido." color="#FD7979"/>

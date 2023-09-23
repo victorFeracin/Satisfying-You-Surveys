@@ -5,7 +5,6 @@ import FormContainer from '../components/FormContainer/FormContainer';
 import ErrorText from '../components/ErrorText/ErrorText';
 import Input from '../components/Input/Input';
 
-
 const Login = (props) => {
 
   const [email, setEmail] = useState('');
@@ -22,7 +21,8 @@ const Login = (props) => {
   }
 
   return (
-    <FormContainer>
+
+    <FormContainer padding={30}>
       <LoginTitle/>
 
       <Input label="E-mail" value={email} onChangeText={setEmail}/>

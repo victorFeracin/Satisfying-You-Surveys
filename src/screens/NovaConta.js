@@ -16,7 +16,7 @@ const NovaConta = (props) => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer padding={30}>
 
       <Input label="E-mail" value={email} onChangeText={setEmail}/>
       <Input label="Senha" value={password} onChangeText={setPassword} secureTextEntry={true}/>

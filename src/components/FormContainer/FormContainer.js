@@ -1,12 +1,14 @@
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import StyleFormContainer from "./StyleFormContainer";
 
 const FormContainer = (props) => {
 
   return (
-    <View style={StyleFormContainer.container}>
-      {props.children}
-    </View>
+    <ScrollView style={StyleFormContainer.container}>
+      <View style={[ {padding: props.padding}]}>
+        {props.children}
+      </View>
+    </ScrollView>
   );
 }
 
