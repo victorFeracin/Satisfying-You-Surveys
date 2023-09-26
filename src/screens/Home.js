@@ -1,11 +1,4 @@
-//Importação
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-} from 'react-native';
-import {useState} from 'react';
+import { useState } from 'react';
 import FormContainer from '../components/FormContainer/FormContainer';
 import SearchInput from '../components/SearchInput/SearchInput';
 import CardContainer from '../components/CardContainer/CardContainer';
@@ -19,7 +12,7 @@ const Home = (props) => {
     props.navigation.navigate(link)
   }
   const goToNovaPesquisa = () => {
-    props.navigation.navigate('Login');
+    props.navigation.navigate('AcoesPesquisa');
   }
 
   const cardsTest = [

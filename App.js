@@ -5,6 +5,7 @@ import Home from './src/screens/Home';
 import Drawer from './src/screens/Drawer';
 import NovaConta from './src/screens/NovaConta';
 import RecuperarSenha from './src/screens/RecuperarSenha';
+import AcoesPesquisa from './src/screens/AcoesPesquisa';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,11 @@ const App = () => {
           name="RecuperarSenha"
           component={RecuperarSenha}
           options={{ headerTitle: 'Recuperação de senha' }}
+        />
+        <Stack.Screen
+          name="AcoesPesquisa"
+          component={AcoesPesquisa}
+          options={{ headerTitle: 'Ações Pesquisa' }}
         />
         
       </Stack.Navigator>
