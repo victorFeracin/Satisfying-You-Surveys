@@ -8,11 +8,11 @@ import Btn from '../components/Btn/Btn';
 /*Definição da função de criação do componente*/
 const Home = (props) => {
 
-  const goToAcoesPesquisa = (link) => {
-    props.navigation.navigate(link)
+  const goToAcoesPesquisa = () => {
+    props.navigation.navigate('AcoesPesquisa')
   }
   const goToNovaPesquisa = () => {
-    props.navigation.navigate('AcoesPesquisa');
+    props.navigation.navigate('NovaPesquisa');
   }
 
   const cardsTest = [
@@ -20,25 +20,21 @@ const Home = (props) => {
         img: require('../../assets/images/Secomp.png'),
         title: 'SECOMP 2023',
         date: '10/10/2023',
-        link: 'Login'
       },
       {
         img: require('../../assets/images/Ubuntu.png'),
         title: 'UBUNTU 2022',
         date: '05/06/2022',
-        link: 'NovaConta'
       },
       {
         img: require('../../assets/images/MeninasCpu.png'),
         title: 'MENINAS CPU',
         date: '15/08/2023',
-        link: 'Login'
       },
       {
         img: require('../../assets/images/Secomp.png'),
         title: 'Teste 202424244',
         date: '07/07/2024',
-        link: 'Login'
       },
   ] //REMOVER QUANDO CHAMAR API
 
@@ -49,7 +45,7 @@ const Home = (props) => {
       <CardContainer>
         {cardsTest.map((card, index) => {
           return(
-            <SurveyCard key={index} img={card?.img} title={card?.title} date={card?.date} onPress={() => goToAcoesPesquisa(card?.link)}/>
+            <SurveyCard key={index} img={card?.img} title={card?.title} date={card?.date} onPress={() => goToAcoesPesquisa()}/>
           )
         })} 
       </CardContainer>

@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-const StyleSurveyCard = StyleSheet.create({
+const StyleAcoesCard = StyleSheet.create({
   
 
 });
 
-export default StyleSurveyCard;
+export default StyleAcoesCard;

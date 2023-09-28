@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FormContainer from '../components/FormContainer/FormContainer';
+import AcoesCard from '../components/AcoesCard/AcoesCard';
 
 
 const AcoesPesquisa = (props) => {
@@ -11,7 +12,7 @@ const AcoesPesquisa = (props) => {
   return (
     <FormContainer padding={30}>
 
-      
+      <AcoesCard/>
     </FormContainer>
   );
 }
