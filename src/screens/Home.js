@@ -8,8 +8,10 @@ import Btn from '../components/Btn/Btn';
 /*Definição da função de criação do componente*/
 const Home = (props) => {
 
-  const goToAcoesPesquisa = () => {
-    props.navigation.navigate('AcoesPesquisa')
+  const goToAcoesPesquisa = (card) => {
+    props.navigation.navigate('AcoesPesquisa', {
+      card
+    })
   }
   const goToNovaPesquisa = () => {
     props.navigation.navigate('NovaPesquisa');
@@ -45,7 +47,7 @@ const Home = (props) => {
       <CardContainer>
         {cardsTest.map((card, index) => {
           return(
-            <SurveyCard key={index} img={card?.img} title={card?.title} date={card?.date} onPress={() => goToAcoesPesquisa()}/>
+            <SurveyCard key={index} img={card?.img} title={card?.title} date={card?.date} onPress={() => goToAcoesPesquisa(card)}/>
           )
         })} 
       </CardContainer>

@@ -6,6 +6,10 @@ import Drawer from './src/screens/Drawer';
 import NovaConta from './src/screens/NovaConta';
 import RecuperarSenha from './src/screens/RecuperarSenha';
 import AcoesPesquisa from './src/screens/AcoesPesquisa';
+import {
+  ColetarAcaoPesquisa,
+} from './src/screens/ColetarAcaoPesquisa';
+import {Agradecimento} from './src/screens/Agradecimento';
 
 const Stack = createStackNavigator();
 
@@ -27,30 +31,42 @@ const App = () => {
             color: '#FFFFFF',
           },
         }}>
-
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
-        <Stack.Screen name="Drawer"component={Drawer} options={{ headerShown: false }}/>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen
+          name="Drawer"
+          component={Drawer}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen
           name="NovaConta"
           component={NovaConta}
-          options={{ headerTitle: 'Nova Conta' }}
+          options={{headerTitle: 'Nova Conta'}}
         />
         <Stack.Screen
           name="RecuperarSenha"
           component={RecuperarSenha}
-          options={{ headerTitle: 'Recuperação de senha' }}
+          options={{headerTitle: 'Recuperação de senha'}}
         />
         <Stack.Screen
           name="AcoesPesquisa"
           component={AcoesPesquisa}
-          options={{ headerTitle: 'Ações Pesquisa' }}
+          options={{headerTitle: 'Ações Pesquisa'}}
         />
-        
+        <Stack.Screen
+          name="ColetarAcaoPesquisa"
+          component={ColetarAcaoPesquisa}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Agradecimento"
+          component={Agradecimento}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
