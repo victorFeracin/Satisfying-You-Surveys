@@ -6,6 +6,9 @@ import Drawer from './src/screens/Drawer';
 import NovaConta from './src/screens/NovaConta';
 import RecuperarSenha from './src/screens/RecuperarSenha';
 import AcoesPesquisa from './src/screens/AcoesPesquisa';
+import {ColetarAcaoPesquisa} from './src/screens/ColetarAcaoPesquisa';
+import {Agradecimento} from './src/screens/Agradecimento';
+import {RelatorioAcaoPesquisa} from './src/screens/RelatorioAcaoPesquisa';
 import NovaPesquisa from './src/screens/NovaPesquisa';
 
 const Stack = createStackNavigator();
@@ -58,6 +61,21 @@ const App = () => {
           name="NovaPesquisa"
           component={NovaPesquisa}
           options={{headerTitle: 'Nova Pesquisa'}}
+        />
+        <Stack.Screen
+          name="ColetarAcaoPesquisa"
+          component={ColetarAcaoPesquisa}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Agradecimento"
+          component={Agradecimento}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RelatorioAcaoPesquisa"
+          component={RelatorioAcaoPesquisa}
+          options={{headerTitle: 'Relatório'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
