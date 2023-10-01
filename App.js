@@ -9,6 +9,8 @@ import AcoesPesquisa from './src/screens/AcoesPesquisa';
 import {ColetarAcaoPesquisa} from './src/screens/ColetarAcaoPesquisa';
 import {Agradecimento} from './src/screens/Agradecimento';
 import {RelatorioAcaoPesquisa} from './src/screens/RelatorioAcaoPesquisa';
+import NovaPesquisa from './src/screens/NovaPesquisa';
+import ModificarPesquisa from './src/screens/ModificarPesquisa';
 
 const Stack = createStackNavigator();
 
@@ -54,7 +56,12 @@ const App = () => {
         <Stack.Screen
           name="AcoesPesquisa"
           component={AcoesPesquisa}
-          options={({route}) => ({headerTitle: route.params.card.title})}
+          options={{headerTitle: 'Ações Pesquisa'}}
+        />
+        <Stack.Screen
+          name="NovaPesquisa"
+          component={NovaPesquisa}
+          options={{headerTitle: 'Nova Pesquisa'}}
         />
         <Stack.Screen
           name="ColetarAcaoPesquisa"
@@ -70,6 +77,11 @@ const App = () => {
           name="RelatorioAcaoPesquisa"
           component={RelatorioAcaoPesquisa}
           options={{headerTitle: 'Relatório'}}
+        />
+        <Stack.Screen
+          name="ModificarPesquisa"
+          component={ModificarPesquisa}
+          options={{headerTitle: 'Modificar Pesquisa'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

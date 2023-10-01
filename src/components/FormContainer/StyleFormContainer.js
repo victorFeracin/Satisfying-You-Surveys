@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const StyleFormContainer = StyleSheet.create({
   container: {
@@ -6,7 +6,6 @@ const StyleFormContainer = StyleSheet.create({
     backgroundColor: '#372775',
     flex: 1,
     display: 'flex',
-    
   },
 });
 
