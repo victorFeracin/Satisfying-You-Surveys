@@ -6,9 +6,7 @@ import Drawer from './src/screens/Drawer';
 import NovaConta from './src/screens/NovaConta';
 import RecuperarSenha from './src/screens/RecuperarSenha';
 import AcoesPesquisa from './src/screens/AcoesPesquisa';
-import {
-  ColetarAcaoPesquisa,
-} from './src/screens/ColetarAcaoPesquisa';
+import {ColetarAcaoPesquisa} from './src/screens/ColetarAcaoPesquisa';
 import {Agradecimento} from './src/screens/Agradecimento';
 import {RelatorioAcaoPesquisa} from './src/screens/RelatorioAcaoPesquisa';
 
@@ -56,7 +54,7 @@ const App = () => {
         <Stack.Screen
           name="AcoesPesquisa"
           component={AcoesPesquisa}
-          options={{headerTitle: 'Ações Pesquisa'}}
+          options={({route}) => ({headerTitle: route.params.card.title})}
         />
         <Stack.Screen
           name="ColetarAcaoPesquisa"
