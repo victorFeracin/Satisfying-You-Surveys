@@ -78,6 +78,7 @@ const styled = StyleSheet.create({
     fontSize: 32,
     fontFamily: 'AveriaLibre-Regular',
     color: '#FFF',
+    textAlign: 'center',
   },
   content: {
     flex: 1,
