@@ -45,9 +45,9 @@ export function ColetarAcaoPesquisa(props) {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            {states.map(state => (
+            {states.map((state, index) => (
               <TouchableOpacity
-                key={state.name}
+                key={index}
                 style={styled.wrapperIcon}
                 onPress={() => props.navigation.navigate('Agradecimento')}>
                 <MaterialCommunityIcons
