@@ -1,9 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const StyleAcoesCard = StyleSheet.create({
-  container: {
-
-  },
+  container: {},
   containerCard: {
     padding: 30,
     alignItems: 'center',
@@ -15,8 +13,8 @@ const StyleAcoesCard = StyleSheet.create({
     fontSize: 36,
     fontFamily: 'AveriaLibre-Regular',
     color: '#FFF',
-    marginTop: 14
-  }
+    marginTop: 14,
+  },
 });
 
 export default StyleAcoesCard;

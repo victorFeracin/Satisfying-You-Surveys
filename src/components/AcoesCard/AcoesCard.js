@@ -17,7 +17,7 @@ const AcoesCard = props => {
       showsHorizontalScrollIndicator={false}>
       <TouchableOpacity
         style={StyleAcoesCard.containerCard}
-        onPress={props.onPress}>
+        onPress={() => navigation.navigate('ModificarPesquisa')}>
         <Icon name="edit-document" size={50} color="#FFFFFF" />
         <Text style={StyleAcoesCard.title}>Modificar</Text>
       </TouchableOpacity>
