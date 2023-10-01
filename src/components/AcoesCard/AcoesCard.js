@@ -33,7 +33,7 @@ const AcoesCard = props => {
 
       <TouchableOpacity
         style={StyleAcoesCard.containerCard}
-        onPress={props.onPress}>
+        onPress={() => navigation.navigate('RelatorioAcaoPesquisa')}>
         <Icon name="donut-large" size={50} color="#FFFFFF" />
         <Text style={StyleAcoesCard.title}>Relatório</Text>
       </TouchableOpacity>

@@ -10,6 +10,7 @@ import {
   ColetarAcaoPesquisa,
 } from './src/screens/ColetarAcaoPesquisa';
 import {Agradecimento} from './src/screens/Agradecimento';
+import {RelatorioAcaoPesquisa} from './src/screens/RelatorioAcaoPesquisa';
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,11 @@ const App = () => {
           name="Agradecimento"
           component={Agradecimento}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RelatorioAcaoPesquisa"
+          component={RelatorioAcaoPesquisa}
+          options={{headerTitle: 'Relatório'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
