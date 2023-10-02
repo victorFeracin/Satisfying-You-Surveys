@@ -7,8 +7,22 @@ import InputImage from '../components/inputImage/inputImage';
 import {TouchableOpacity, View, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, 'O nome precisa conter no mínimo 3 caracteres')
+    .required('Preencha o campo Nome'),
+});
 
 const ModificarPesquisa = props => {
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm({resolver: yupResolver(schema)});
   const [name, setName] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -16,9 +30,13 @@ const ModificarPesquisa = props => {
     setModalVisible(false);
   };
 
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
   return (
     <FormContainer padding={30}>
-      <Input label="Nome" value={name} onChangeText={setName} />
+      <Input control={control} name='name' error={errors?.name?.message} label="Nome" value={name} onChangeText={setName} />
       <InputDate />
       <InputImage />
 
@@ -29,6 +47,7 @@ const ModificarPesquisa = props => {
             backgroundColor="#37BD6D"
             padding={10}
             marginTop={0}
+            action={handleSubmit(onSubmit)}
           />
         </View>
 
