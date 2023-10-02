@@ -8,8 +8,6 @@ import StyleInputImage from './StyleInputImage';
 import {Alert} from 'react-native';
 
 const InputImage = props => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
   const handleImageSelect = () => {
     Alert.alert(
       'Selecione',
@@ -37,7 +35,8 @@ const InputImage = props => {
     const result = await launchImageLibrary(options);
 
     if (result?.assets) {
-      setSelectedImage(result.assets[0].uri);
+      props.setSelectedImage(result.assets[0].uri);
+      props.setError(false);
     }
   };
 
@@ -52,26 +51,28 @@ const InputImage = props => {
     const result = await launchCamera(options);
 
     if (result?.assets) {
-      setSelectedImage(result.assets[0].uri);
+      props.setSelectedImage(result.assets[0].uri);
+      props.setError(false);
+
     }
   };
 
   return (
-    <View style={StyleInputImage.container}>
-      <Text style={StyleInputImage.label}>Imagem</Text>
-      <View style={StyleInputImage.containerImage}>
-        <TouchableOpacity onPress={() => handleImageSelect()}>
-          {selectedImage ? (
-            <Image
-              source={{uri: selectedImage}}
-              style={{width: 50, height: 50}}
-            />
-          ) : (
-            <Text>Câmera/Galeria de imagens</Text>
-          )}
-        </TouchableOpacity>
+      <View style={StyleInputImage.container}>
+        <Text style={StyleInputImage.label}>Imagem</Text>
+        <View style={StyleInputImage.containerImage}>
+          <TouchableOpacity onPress={() => handleImageSelect()}>
+            {props.selectedImage ? (
+              <Image
+                source={{uri: props.selectedImage}}
+                style={{width: 50, height: 50}}
+              />
+            ) : (
+              <Text>Câmera/Galeria de imagens</Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
   );
 };
 

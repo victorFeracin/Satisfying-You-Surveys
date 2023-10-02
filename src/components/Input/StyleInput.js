@@ -16,6 +16,12 @@ const StyleInput = StyleSheet.create({
     padding: 10,
     fontFamily: 'AveriaLibre-Regular',
     fontSize: 18,
+  },
+  error: {
+    fontFamily: 'AveriaLibre-Regular',
+    fontSize: 16,
+    marginTop: 5,
+    color: '#FD7979'
   }
 });
 

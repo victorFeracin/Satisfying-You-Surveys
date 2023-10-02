@@ -19,7 +19,7 @@ const StyleInputImage = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: 'AveriaLibre-Regular',
     marginBottom: 5,
-  },
+  }
 });
 
 export default StyleInputImage;

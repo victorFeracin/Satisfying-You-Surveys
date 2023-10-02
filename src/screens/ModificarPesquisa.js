@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import Btn from '../components/Btn/Btn';
 import FormContainer from '../components/FormContainer/FormContainer';
-import ErrorText from '../components/ErrorText/ErrorText';
 import Input from '../components/Input/Input';
 import InputDate from '../components/InputDate/InputDate';
 import InputImage from '../components/inputImage/inputImage';
