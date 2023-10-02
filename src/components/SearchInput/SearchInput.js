@@ -17,6 +17,7 @@ const SearchInput = (props) => {
         style={StyleSearchInput.input}
         placeholder="Insira o termo de busca..."
         placeholderTextColor="#8B8B8B"
+        onChangeText={props.setSearchText}
       />
     </View>
   );
