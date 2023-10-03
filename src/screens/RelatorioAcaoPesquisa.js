@@ -1,6 +1,9 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
 import {VictoryPie, VictoryTooltip} from 'victory-native';
+
 export function RelatorioAcaoPesquisa() {
+  const {width, height} = useWindowDimensions();
+  
   const states = [
     {
       color: '#53D8D8',
@@ -26,7 +29,15 @@ export function RelatorioAcaoPesquisa() {
 
   return (
     <View style={styled.container}>
-      <View style={styled.chart}>
+      <View
+        style={[
+          styled.chart,
+          {
+            flexDirection: width > height ? 'row' : 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        ]}>
         <VictoryPie
           data={[
             {x: 'Excelente', y: 35},
@@ -37,6 +48,12 @@ export function RelatorioAcaoPesquisa() {
           ]}
           colorScale={['#F1CE7E', '#6994FE', '#5FCDA4', '#EA7288', '#53D8D8']}
           labelComponent={<VictoryTooltip renderInPortal={false} />}
+          height={320}
+          width={320}
+          style={{
+            borderWidth: 2,
+            borderColor: 'red',
+          }}
         />
         <View style={styled.wrapperStates}>
           {states.map(state => (
@@ -58,17 +75,7 @@ const styled = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#372775',
   },
-  wrapperChart: {
-    flex: 1,
-    borderWidth: 2,
-    borderColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   chart: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
