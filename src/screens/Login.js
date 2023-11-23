@@ -18,8 +18,8 @@ const Login = (props) => {
   const {control, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
   const onSubmit = async (data) => {
-    await login(data.email, data.password);
-    goToHome();
+    const check = await login(data.email, data.password);
+    if(check) goToHome();
   }
 
   const goToHome = () => {

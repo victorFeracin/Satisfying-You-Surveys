@@ -18,8 +18,8 @@ const NovaConta = (props) => {
   const {control, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)});
 
   const onSubmit = async (data) => {
-    await createUser(data.email, data.password);
-    goToLogin();
+    const check = await createUser(data.email, data.password);
+    if(check) goToLogin();
   }
 
   const goToLogin = () => {
