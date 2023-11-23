@@ -67,3 +67,4 @@ yarn.lock
 /coverage
 
 gradle-wrapper.properties
+firebase-config.js

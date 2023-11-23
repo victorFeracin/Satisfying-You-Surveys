@@ -5,6 +5,7 @@ import Input from '../components/Input/Input';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { createUser } from '../API/services.js';
 
 const schema = Yup.object().shape({
   email: Yup.string().email('Deve ser um email válido').required('Preencha o campo E-mail'),
@@ -14,12 +15,10 @@ const schema = Yup.object().shape({
 
 const NovaConta = (props) => {
 
-  const {control, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const {control, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)});
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    await createUser(data.email, data.password);
     goToLogin();
   }
 
@@ -30,9 +29,9 @@ const NovaConta = (props) => {
   return (
     <FormContainer padding={30}>
 
-      <Input control={control} name='email' error={errors?.email?.message} label="E-mail" value={email} onChangeText={setEmail}/>
-      <Input control={control} name='password' error={errors?.password?.message} label="Senha" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-      <Input control={control} name='passwordConfirm' error={errors?.passwordConfirm?.message} label="Repetir Senha" value={repeatPassword} onChangeText={setRepeatPassword} secureTextEntry={true}/>
+      <Input control={control} name='email' error={errors?.email?.message} label="E-mail"/>
+      <Input control={control} name='password' error={errors?.password?.message} label="Senha" secureTextEntry={true}/>
+      <Input control={control} name='passwordConfirm' error={errors?.passwordConfirm?.message} label="Repetir Senha" secureTextEntry={true}/>
 
       <Btn txt="CADASTRAR" action={handleSubmit(onSubmit)} backgroundColor="#37BD6D" padding={10} marginTop={30}/>
     </FormContainer>
