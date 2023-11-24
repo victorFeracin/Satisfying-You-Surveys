@@ -1,5 +1,5 @@
 import { app } from './firebase-config.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
 const auth = getAuth(app);
 
@@ -15,11 +15,20 @@ export const createUser = async (email, password) => {
 
 export const login = async (email, password) => {
   try {
-    const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-    console.log("CREDENTIALS " + userCredentials.user.uid);
+    await signInWithEmailAndPassword(auth, email, password);
     return true;
   } catch (error) {
     console.log('Erro ao tentar fazer login: ' + error);
+    return false;
+  }
+};
+
+export const resetPassword = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    return true;
+  } catch (error) {
+    console.log('Erro ao tentar trocar senha: ' + error);
     return false;
   }
 };
