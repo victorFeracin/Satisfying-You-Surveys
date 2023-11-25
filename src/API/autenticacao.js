@@ -1,3 +1,4 @@
+import { useAuth } from '../hooks/auth.js';
 import { app } from './firebase-config.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
@@ -5,8 +6,8 @@ const auth = getAuth(app);
 
 export const createUser = async (email, password) => {
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    return true;
+    const {user} = await createUserWithEmailAndPassword(auth, email, password);
+    return user;
   } catch (error) {
     console.log('Erro ao criar conta: ' + error);
     return false;
@@ -15,8 +16,9 @@ export const createUser = async (email, password) => {
 
 export const login = async (email, password) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-    return true;
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    const userData = res.user
+    return userData;
   } catch (error) {
     console.log('Erro ao tentar fazer login: ' + error);
     return false;

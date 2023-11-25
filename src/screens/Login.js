@@ -6,7 +6,8 @@ import Input from '../components/Input/Input';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { login } from '../API/services.js';
+import { login } from '../API/autenticacao.js';
+import { useAuth } from '../hooks/auth';
 
 const schema = Yup.object().shape({
   email: Yup.string().email('Deve ser um email válido').required('Preencha o campo E-mail'),
@@ -16,15 +17,11 @@ const schema = Yup.object().shape({
 const Login = (props) => {
 
   const {control, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
-
+  const {handleLogin} = useAuth();
   const onSubmit = async (data) => {
-    const check = await login(data.email, data.password);
-    if(check) goToHome();
+    await handleLogin(data)
   }
 
-  const goToHome = () => {
-    props.navigation.navigate('Drawer');
-  }
   const goToNovaConta = () => {
     props.navigation.navigate('NovaConta');
   }
