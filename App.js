@@ -12,6 +12,11 @@ import {RelatorioAcaoPesquisa} from './src/screens/RelatorioAcaoPesquisa';
 import NovaPesquisa from './src/screens/NovaPesquisa';
 import ModificarPesquisa from './src/screens/ModificarPesquisa';
 import {AppProvider} from './src/hooks';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 
 const Stack = createStackNavigator();
 
