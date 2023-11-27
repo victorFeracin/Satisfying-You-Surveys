@@ -8,6 +8,7 @@ import StyleInputImage from './StyleInputImage';
 import {Alert} from 'react-native';
 
 const InputImage = props => {
+
   const handleImageSelect = () => {
     Alert.alert(
       'Selecione',

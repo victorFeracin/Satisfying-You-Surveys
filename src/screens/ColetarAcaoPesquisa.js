@@ -32,6 +32,11 @@ export function ColetarAcaoPesquisa(props) {
     },
   ];
 
+  const handleAvaliation = (statusName) => {
+    
+    props.navigation.navigate('Agradecimento')
+  }
+
   return (
     <SafeAreaView style={styled.container}>
       <Text style={styled.title}>O que você achou do {card.title}?</Text>
@@ -49,7 +54,7 @@ export function ColetarAcaoPesquisa(props) {
               <TouchableOpacity
                 key={index}
                 style={styled.wrapperIcon}
-                onPress={() => props.navigation.navigate('Agradecimento')}>
+                onPress={() => handleAvaliation(state.name)}>
                 <MaterialCommunityIcons
                   name={state.icon}
                   size={70}

@@ -10,6 +10,7 @@ import DeleteModal from '../components/DeleteModal/DeleteModal';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { usePesquisa } from '../hooks/pesquisa';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -18,6 +19,8 @@ const schema = Yup.object().shape({
 });
 
 const ModificarPesquisa = props => {
+  const {card} = props.route.params;
+ 
   const {
     control,
     handleSubmit,
@@ -25,25 +28,41 @@ const ModificarPesquisa = props => {
   } = useForm({resolver: yupResolver(schema)});
   const [name, setName] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
-
+  const [selectedDate, setSelectedDate] = useState(card.date);
+  const [selectedImage, setSelectedImage] = useState(card.image);
+  const {handleChangePesquisa, handleDeletePesquisa} = usePesquisa();
   const handleDelete = () => {
-    setModalVisible(false);
+    handleDeletePesquisa(card.id)
   };
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const onSubmit = async data => {
+    await handleChangePesquisa({id: card.id, name: data.name, date: selectedDate,image: selectedImage})
+  };
 
   return (
     <FormContainer padding={30}>
-      <Input control={control} name='name' error={errors?.name?.message} label="Nome" value={name} onChangeText={setName} />
-      <InputDate />
-      <InputImage />
+      <Input
+        control={control}
+        name="name"
+        error={errors?.name?.message}
+        label="Nome"
+        value={name || card.name}
+        onChangeText={setName}
+        defaultValue={card.name}
+      />
+      <InputDate
+        setSelectedDate={setSelectedDate}
+        selectedDate={selectedDate}
+      />
+      <InputImage
+        setSelectedImage={setSelectedImage}
+        selectedImage={selectedImage}
+      />
 
       <View style={containerButtons.containerTO}>
         <View style={{width: '80%'}}>
           <Btn
-            txt="CADASTRAR"
+            txt="SALVAR"
             backgroundColor="#37BD6D"
             padding={10}
             marginTop={0}

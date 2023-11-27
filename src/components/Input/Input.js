@@ -16,7 +16,7 @@ const Input = (props) => {
         <>
           <View style={StyleInput.container}>
           <Text style={StyleInput.label}>{props.label}</Text>
-          <TextInput style={StyleInput.input} value={value} onChangeText={onChange} placeholder={props.placeholder} secureTextEntry={props.secureTextEntry}></TextInput>
+          <TextInput style={StyleInput.input} value={value} onChangeText={onChange} placeholder={props.placeholder}  defaultValue={props.defaultValue} secureTextEntry={props.secureTextEntry}></TextInput>
         </View>
         {props.error && <Text style={StyleInput.error}>{props.error}</Text>}
         </>

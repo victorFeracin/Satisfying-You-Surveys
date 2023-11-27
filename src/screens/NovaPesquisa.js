@@ -8,6 +8,8 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {StyleSheet, Text} from 'react-native';
+import {usePesquisa} from '../hooks/pesquisa';
+import {useAuth} from '../hooks/auth';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -22,11 +24,12 @@ const NovaPesquisa = props => {
   } = useForm({resolver: yupResolver(schema)});
   const [name, setName] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [error, setError] = useState(false);
-  const onSubmit = data => {
-    if(!error) {
-      props.navigation.goBack();
-    }
+  const {handleCreatePesquisa} = usePesquisa();
+  const {user} = useAuth();
+  const onSubmit = async data => {
+    await handleCreatePesquisa({name: data.name, userId: user.id, imageUrl: selectedImage, date: selectedDate || new Date()});
   };
 
   return (
@@ -40,7 +43,10 @@ const NovaPesquisa = props => {
         onChangeText={setName}
       />
 
-      <InputDate />
+      <InputDate
+        setSelectedDate={setSelectedDate}
+        selectedDate={selectedDate}
+      />
 
       <InputImage
         setSelectedImage={setSelectedImage}
