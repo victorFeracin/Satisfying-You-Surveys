@@ -1,6 +1,6 @@
 import { useAuth } from '../hooks/auth.js';
 import { app } from './firebase-config.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from 'firebase/auth';
 
 const auth = getAuth(app);
 
@@ -33,4 +33,17 @@ export const resetPassword = async (email) => {
     console.log('Erro ao tentar trocar senha: ' + error);
     return false;
   }
+};
+
+export const getUserEmailAuthenticated = async () => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userEmail = user.email;
+        resolve(userEmail);
+      } else {
+        reject('Usuário não autenticado');
+      }
+    });
+  });
 };
