@@ -4,25 +4,15 @@ import { View, Text } from 'react-native';
 import CustomDrawerItem from '../CustomDrawerItem/CustomDrawerItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import StyleCustomDrawerContent from './StyleCustomDrawerContent';
-import { getUserEmailAuthenticated } from '../../API/autenticacao.js'
-import {Alert} from 'react-native';
+import { useAuth } from '../../hooks/auth';
 
 const CustomDrawerContent = ({ navigation }) => {
-  const [userEmail, setUserEmail] = useState(null);
-
-  useEffect(() => {
-    const fetchUserEmail = async () => {
-      const email = await getUserEmailAuthenticated();
-      setUserEmail(email);
-    };
-
-    fetchUserEmail();
-  }, []);
+  const { user } = useAuth();
 
   return (
     <View style={StyleCustomDrawerContent.container}>
       <View style={StyleCustomDrawerContent.drawerHeader}>
-        <Text style={StyleCustomDrawerContent.headerText}>{userEmail}</Text>
+        <Text style={StyleCustomDrawerContent.headerText}>{user.email}</Text>
         <View style={StyleCustomDrawerContent.headerDivider} />
       </View>
       <DrawerContentScrollView>
