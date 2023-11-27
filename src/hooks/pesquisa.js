@@ -13,7 +13,8 @@ export function PesquisaProvider({children}) {
   const navigation = useNavigation();
 
   const handleCreatePesquisa = async ({name, userId, imageUrl, date}) => {
-    const imageRef = ref(storage, `${name}.jpeg`);
+    const currentTimestamp = new Date().getTime();
+    const imageRef = ref(storage, `${currentTimestamp}_picture.jpeg`);
     const file = await fetch(imageUrl);
     const blob = await file.blob();
     uploadBytes(imageRef, blob, {contentType: 'image/jpeg'})
