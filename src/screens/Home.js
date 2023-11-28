@@ -32,18 +32,29 @@ const Home = props => {
       <SearchInput setSearchText={setSearchText} />
 
       <CardContainer>
-        {pesquisas &&
-          pesquisas.map((card, index) => {
-            return (
-              <SurveyCard
-                key={index}
-                img={card?.image}
-                title={card?.name}
-                date={card?.date}
-                onPress={() => goToAcoesPesquisa(card)}
-              />
-            );
-          })}
+        {cardsFiltered.length
+          ? cardsFiltered.map((card, index) => {
+              return (
+                <SurveyCard
+                  key={index}
+                  img={card?.image}
+                  title={card?.name}
+                  date={card?.date}
+                  onPress={() => goToAcoesPesquisa(card)}
+                />
+              );
+            })
+          : pesquisas.map((card, index) => {
+              return (
+                <SurveyCard
+                  key={index}
+                  img={card?.image}
+                  title={card?.name}
+                  date={card?.date}
+                  onPress={() => goToAcoesPesquisa(card)}
+                />
+              );
+            })}
       </CardContainer>
 
       <Btn

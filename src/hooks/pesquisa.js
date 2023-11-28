@@ -2,13 +2,15 @@ import {useNavigation} from '@react-navigation/native';
 import {createContext, useContext, useState, useEffect} from 'react';
 import {changePesquisa, deletePesquisa} from '../API/pesquisa';
 import {Alert} from 'react-native';
-import {addDoc, collection, onSnapshot, query} from 'firebase/firestore';
+import {addDoc, collection, onSnapshot, query, where} from 'firebase/firestore';
 import {db, storage} from '../API/firebase-config';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { useAuth } from './auth';
 
 const PesquisaContext = createContext({});
 
 export function PesquisaProvider({children}) {
+  const {user} = useAuth();
   const [pesquisas, setPesquisas] = useState([]);
   const navigation = useNavigation();
 
@@ -71,20 +73,22 @@ export function PesquisaProvider({children}) {
   };
 
   useEffect(() => {
-    const q = query(collection(db, 'pesquisa'));
-    onSnapshot(q, snapshot => {
-      const allPesquisas = [];
-      snapshot.forEach(doc => {
-        allPesquisas.push({
-          id: doc.id,
-          name: doc.data().name,
-          image: doc.data().image,
-          date: new Date(doc.data().date?.seconds * 1000),
+    if(user.id) {
+      const q = query(collection(db, 'pesquisa'), where("userId", "==", user.id));
+      onSnapshot(q, snapshot => {
+        const allPesquisas = [];
+        snapshot.forEach(doc => {
+          allPesquisas.push({
+            id: doc.id,
+            name: doc.data().name,
+            image: doc.data().image,
+            date: new Date(doc.data().date?.seconds * 1000),
+          });
         });
+        setPesquisas(allPesquisas);
       });
-      setPesquisas(allPesquisas);
-    });
-  }, []);
+    }
+  }, [user]);
 
   return (
     <PesquisaContext.Provider

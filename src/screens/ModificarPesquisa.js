@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Btn from '../components/Btn/Btn';
 import FormContainer from '../components/FormContainer/FormContainer';
 import Input from '../components/Input/Input';
@@ -24,6 +24,7 @@ const ModificarPesquisa = props => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: {errors},
   } = useForm({resolver: yupResolver(schema)});
   const [name, setName] = useState('');
@@ -38,6 +39,10 @@ const ModificarPesquisa = props => {
   const onSubmit = async data => {
     await handleChangePesquisa({id: card.id, name: data.name, date: selectedDate,image: selectedImage})
   };
+
+  useEffect(() => {
+    setValue("name", card.name);
+  },[])
 
   return (
     <FormContainer padding={30}>
