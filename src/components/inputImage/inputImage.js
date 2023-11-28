@@ -37,7 +37,9 @@ const InputImage = props => {
 
     if (result?.assets) {
       props.setSelectedImage(result.assets[0].uri);
-      props.setError(false);
+      if (!props.modify) {
+        props.setError(false);
+      }
     }
   };
 
@@ -53,8 +55,9 @@ const InputImage = props => {
 
     if (result?.assets) {
       props.setSelectedImage(result.assets[0].uri);
-      props.setError(false);
-
+      if (!props.modify) {
+        props.setError(false);
+      }
     }
   };
 

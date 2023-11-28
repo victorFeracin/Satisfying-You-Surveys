@@ -62,6 +62,7 @@ const ModificarPesquisa = props => {
       <InputImage
         setSelectedImage={setSelectedImage}
         selectedImage={selectedImage}
+        modify={true}
       />
 
       <View style={containerButtons.containerTO}>

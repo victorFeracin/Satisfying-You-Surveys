@@ -52,6 +52,7 @@ const NovaPesquisa = props => {
         setSelectedImage={setSelectedImage}
         setError={setError}
         selectedImage={selectedImage}
+        modify={false}
       />
       {!!error && <Text style={styled.error}>Escolha ou Tire uma foto</Text>}
 
